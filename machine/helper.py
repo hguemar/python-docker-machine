@@ -18,11 +18,10 @@ def which(program):
     if fpath:
         if is_exe(program):
             return program
-    else:
-        for path in os.environ["PATH"].split(os.pathsep):
-            path = path.strip('"')
-            exe_file = os.path.join(path, program)
-            if is_exe(exe_file):
-                return exe_file
+    for path in os.environ["PATH"].split(os.pathsep):
+        path = path.strip('"')
+        exe_file = os.path.join(path, fname)
+        if is_exe(exe_file):
+            return exe_file
 
     return None
